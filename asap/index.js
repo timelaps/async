@@ -9,6 +9,6 @@ function set(fn) {
     return asapSet(fn);
 }
 
-function clear(fn) {
-    return asapClear(fn);
+function clear(id) {
+    return asapClear(id);
 }
