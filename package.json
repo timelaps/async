@@ -1,0 +1,27 @@
+{
+  "name": "@timelaps/async",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "share": "npm version patch && git push && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timelaps/async.git"
+  },
+  "author": "Michael McLaughlin <michael.j.mclaughlin20@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timelaps/async/issues"
+  },
+  "homepage": "https://github.com/timelaps/async#readme",
+  "devDependencies": {
+    "@timelaps/batterie": "^1.0.75"
+  },
+  "dependencies": {
+    "@timelaps/hacks": "^1.0.7",
+    "@timelaps/to": "^1.0.11"
+  }
+}
