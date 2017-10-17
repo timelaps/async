@@ -1,18 +1,26 @@
 var now = require('@timelaps/hacks/now');
-module.exports = function throttle(fn, threshold, scope) {
+var isNil = require('@timelaps/is/nil');
+var set = setTimeout;
+var clear = clearTimeout;
+module.exports = throttle;
+
+function throttle(fn, threshold_, scope) {
     var last,
-        deferTimer;
-    if (!threshold) {
+        deferTimer,
+        threshold = threshold_;
+    if (isNil(threshold)) {
         threshold = 250;
     }
-    return function throttleInstance() {
+    return throttleInstance;
+
+    function throttleInstance() {
         var context = scope || this,
             _now = now(),
             args = arguments;
-        clearTimeout(deferTimer);
+        clear(deferTimer);
         if (last && _now < last + threshold) {
             // hold on to it
-            deferTimer = setTimeout(throttled, threshold);
+            deferTimer = set(throttled, threshold);
         } else {
             throttled();
         }
@@ -21,5 +29,5 @@ module.exports = function throttle(fn, threshold, scope) {
             last = _now;
             fn.apply(context, args);
         }
-    };
-};
+    }
+}
